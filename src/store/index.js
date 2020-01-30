@@ -8,9 +8,13 @@ import getters from './gettets';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+    strict : process.env.NODE_ENV !== 'production',
     state: {
         products: [],
         steps: [],
+        criteria: [],
+        selectedCriteria: {},
+        cartProducts:[],
 
     },
     mutations,

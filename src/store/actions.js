@@ -10,5 +10,11 @@ export default {
         api.getSteps((steps => {
             context.commit('setSteps', steps)
         }))
+    },
+
+    getCriteria(context){
+        api.getCriteria((criteria)=> {
+            context.commit('setCriteria', criteria)
+        })
     }
 }

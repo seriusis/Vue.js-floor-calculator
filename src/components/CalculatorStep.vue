@@ -1,24 +1,29 @@
 <template>
-    <div class="step">
-        <hr>
-        Step <b>{{step.name}}</b>
-        <br>
-        <p v-html="step.description"></p>
-        <hr>
+    <div v-show="step.active" class="flex step-wrap">
+        <div class="step col-9">
+
+            <h4>{{stepNumber}} {{step.title}}</h4>
+            <div v-for="criterion in criteria" :key="criterion.id">
+
+               <criterion :criterion="criterion"></criterion>
+
+            </div>
+
+        </div>
+        <div class="col-3 step-description" v-html="step.description"></div>
     </div>
+
+
 </template>
 
 <script>
+
+    import Criterion from './Criterion';
     export default {
-        data(){
-            return {
-                name: '',
-                status: '',
-                criteria: [],
-                description: ''
-            };
-        },
-        props : ['step']
+        props : ['step', 'step-number', 'criteria'],
+        components:{
+            Criterion
+        }
     }
 </script>
 

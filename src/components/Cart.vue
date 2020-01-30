@@ -1,6 +1,7 @@
 <template>
     <div class="cart">
-        Cart component
+        <hr>
+        Cart {{total}} грн
     </div>
 </template>
 
@@ -10,7 +11,17 @@
             return {
 
             };
-        }
+        },
+        computed: {
+            products(){
+                return this.$store.state.products;
+            },
+            total(){
+                return this.$store.getters.getCartTotal;
+            }
+        },
+
+
     }
 </script>
 

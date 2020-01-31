@@ -1,11 +1,19 @@
 <template>
     <div class="wrap">
+
+        <step-panel
+            :steps="steps"
+            :activeStepIndex="activeStepIndex"
+            >
+
+        </step-panel>
+
         <h4>Выбрано:</h4>
         <div  v-for="(criterion, k) in selectedCriteria" :key="k">
             {{k}} - {{selectedCriteria[k]}}
         </div>
 
-        <calculator-step  v-for="(step, i) in steps"
+        <calculator-step v-show="step.active"  v-for="(step, i) in steps"
                           :key="step.id"
                           :step="step"
                           :step-number="i+1"
@@ -23,6 +31,7 @@
 </template>
 
 <script>
+    import StepPanel from './StepPanel';
     import CalculatorStep from './CalculatorStep';
     import ProductList from './ProductList';
     import Cart from './Cart';
@@ -31,7 +40,8 @@
         components : {
             CalculatorStep,
             ProductList,
-            Cart
+            Cart,
+            StepPanel
         },
         computed : {
             steps(){

@@ -1,5 +1,5 @@
 <template>
-    <div v-show="step.active" class="flex step-wrap">
+    <div class="flex step-wrap">
         <div class="step col-9">
 
             <h4>{{stepNumber}} {{step.title}}</h4>

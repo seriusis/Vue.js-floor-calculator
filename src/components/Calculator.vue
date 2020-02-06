@@ -1,5 +1,5 @@
 <template>
-    <div class="wrap">
+    <div class="wrap container">
 
         <step-panel
             :steps="steps"
@@ -18,30 +18,45 @@
                           :step="step"
                           :step-number="i+1"
                           :criteria="getStepCriteria(step.id)">
+            <template v-slot:buttons>
+                <step-buttons
+                        :step-id="step.id"
+                        :prev-step-index="prevStepIndex"
+                        :next-step-index="nextStepIndex"
+                        :active-step-index="activeStepIndex"
+                        :cart-step-id = "cartStepId"
+                ></step-buttons>
+            </template>
+
+            <template v-if="step.id===cartStepId" v-slot:product-list>
+                <product-list></product-list>
+            </template>
+
         </calculator-step>
-
         <br>
-        <button v-if="prevStepIndex" @click="stepToggle('prev')">Назад</button>
-        <button v-if="nextStepIndex" @click="stepToggle('next')">Далее</button>
-        step : {{activeStepIndex+1}}
 
-        <product-list></product-list>
-        <cart></cart>
+
+
     </div>
 </template>
 
 <script>
     import StepPanel from './StepPanel';
+    import StepButtons from './StepButtons.vue';
     import CalculatorStep from './CalculatorStep';
-    import ProductList from './ProductList';
-    import Cart from './Cart';
+    import ProductList from './ProductList'
 
     export default {
+        data(){
+            return {
+                cartStepId : 'product_list'
+            }
+        },
         components : {
             CalculatorStep,
             ProductList,
-            Cart,
-            StepPanel
+            StepPanel,
+            StepButtons
         },
         computed : {
             steps(){
@@ -61,19 +76,14 @@
             },
             selectedCriteria(){
                 return this.$store.getters.getSelectedCriteria;
-            }
+            },
+
         },
         methods : {
           getStepCriteria(stepId){
               return this.criteria.filter((criterion) => criterion.stepId === stepId)
           },
-            stepToggle(direction){
-                if(direction === 'next'){
-                    this.$store.commit('setActiveStepByIndex',this.activeStepIndex+1)
-                }else{
-                    this.$store.commit('setActiveStepByIndex',this.activeStepIndex-1)
-                }
-            }
+
         },
         created(){
             this.$store.dispatch('getSteps');
@@ -85,7 +95,15 @@
 
     }
 </script>
-
 <style>
-
+    @font-face {
+        font-family: 'Uni Sans Heavy CAPS';
+        src: url('./../assets/fonts/UniSansHeavyCAPS.otf');
+        font-weight: 600;
+    }
+    /*@font-face {
+        font-family: 'Uni Sans Thin CAPS';
+        src: url('./../assets/fonts/UniSansThinCAPS.otf');
+        font-weight: 400;
+    }*/
 </style>

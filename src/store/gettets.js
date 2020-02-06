@@ -23,5 +23,8 @@ export default {
         if(!state.products.length) return 0;
         return Math.round(state.products.reduce((res, cur) => cur.inCart ? (res + cur.price) : res, 0));
 
+    },
+    getCartProducts(state){
+        return state.products.filter((product) => product.inCart);
     }
 }

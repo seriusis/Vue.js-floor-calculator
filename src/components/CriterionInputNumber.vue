@@ -31,8 +31,18 @@
     }
 </script>
 
-<style>
-.radio span{
-    display: block;
+<style scoped>
+    .criterion-input{
+        margin-bottom: 15px;
+    }
+input{
+    padding: 15px 8px;
+    text-align: center;
+    border-radius: 12px;
+    border:1px solid #d7d7d7;
+    max-width: 128px;
 }
+    .postfix{
+        margin-left: 15px;
+    }
 </style>

@@ -1,3 +1,5 @@
+
+
 <template>
   <div id="app">
     <h1>{{title}}</h1>
@@ -22,6 +24,11 @@ export default {
 </script>
 
 <style>
+  body{font-family: "PT Sans"}
+  *{box-sizing: border-box}
+  /*h4, h3{*/
+    /*font-family: 'Uni Sans Heavy CAPS';*/
+  /*}*/
   #app{max-width: 1200px;margin: 0 auto}
   /* css grid */
   .row, .flex{
@@ -120,6 +127,7 @@ export default {
   .relative{position: relative;}
 
   .container{
+    width: 95%;
     max-width: 1200px;
     margin:0 auto;
 
@@ -137,6 +145,9 @@ export default {
   }
   @media(min-width:768px) and (max-width:991px){
     .hidden-sm{display: none;}
+    .hidden-sm{display: none;}
+    .column-sm{flex-direction: column;}
+    .center-sm{text-align: center;}
 
     .col-1-sm{
       flex:0 8.33%;

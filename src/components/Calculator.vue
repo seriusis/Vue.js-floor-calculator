@@ -8,16 +8,13 @@
 
         </step-panel>
 
-        <h4>Выбрано:</h4>
-        <div  v-for="(criterion, k) in selectedCriteria" :key="k">
-            {{k}} - {{selectedCriteria[k]}}
-        </div>
-
         <calculator-step v-show="step.active"  v-for="(step, i) in steps"
                           :key="step.id"
                           :step="step"
                           :step-number="i+1"
-                          :criteria="getStepCriteria(step.id)">
+                          :criteria="getStepCriteria(step.id)"
+                          :is-cart="cartStepId === step.id"
+                          >
             <template v-slot:buttons>
                 <step-buttons
                         :step-id="step.id"
@@ -29,7 +26,7 @@
             </template>
 
             <template v-if="step.id===cartStepId" v-slot:product-list>
-                <product-list></product-list>
+                <product-list v-for="type in productTypes" :key="type" :type="type" :cart-step-id="cartStepId" :selected-criteria="selectedCriteria"></product-list>
             </template>
 
         </calculator-step>
@@ -49,6 +46,7 @@
     export default {
         data(){
             return {
+                productTypes:['heating', 'reg'],
                 cartStepId : 'product_list'
             }
         },

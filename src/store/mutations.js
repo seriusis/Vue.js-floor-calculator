@@ -4,13 +4,8 @@ export default {
 
   setCriterionValue(state, {name, value}){
       Vue.set(state.selectedCriteria, name, value);
+      this.dispatch('getProducts');
   },
-  setActiveStepById(state, id){
-      let current = state.steps.findIndex((step) => step.active);
-      state.steps[current].active = false;
-      let next = state.steps.findIndex((step) => step.id === id);
-      state.steps[next].active = true;
-    },
 
     setActiveStepByIndex(state, next){
         let current = state.steps.findIndex((step) => step.active);
@@ -28,11 +23,11 @@ export default {
     setCriteria( state, criteria){
       state.criteria = criteria;
     },
-    toggleProductInCart(state, id){
-       let index = state.products.findIndex((product) => product.id === id);
-       state.products[index].inCart =  !state.products[index].inCart;
-    }
 
+
+    addProductInCartByType(state, {id, type}){
+        state.products.filter((product)=> product.type === type).forEach((product) => product.inCart = product.id === id);
+    },
 
 
 };

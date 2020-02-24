@@ -2,6 +2,8 @@
     <div class="criterion-input input-text">
         <input @change="setCriterion"
                type="number"
+               min="1"
+               step="0.1"
                :name="name"
                :placeholder="placeholder"
                v-model.number="value" />

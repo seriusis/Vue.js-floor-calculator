@@ -35,7 +35,8 @@
             },
             selectedCriterionValue(){
                 return this.$store.getters.getSelectedCriteria[this.criterion.name]
-            }
+            },
+
         }
     }
 </script>

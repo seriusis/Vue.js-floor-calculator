@@ -10,7 +10,7 @@
                            :value="variant.value"
                            :checked="selectedValue === variant.value"/>
                     <i class="checkmark"></i>
-                    {{variant.text}}
+                    {{variant.value === 'additional-heating' ? generateHeatingText(variant.text) : variant.text}}
                 </span>
             </label>
 
@@ -24,6 +24,9 @@
         methods : {
             selectCriterionValue(i){
                 this.$store.commit('setCriterionValue', {name:this.name, value : this.variants[i].value})
+            },
+            generateHeatingText(text){
+                return text.replace('[floor_type]', this.$store.getters.getSelectedFlooringTypeText);
             }
         },
         created(){

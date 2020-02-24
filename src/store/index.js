@@ -12,9 +12,7 @@ export default new Vuex.Store({
         products: [],
         steps: [],
         criteria: [],
-        selectedCriteria: {},
-        cartProducts:[],
-
+        selectedCriteria: {}
     },
     mutations,
     actions,

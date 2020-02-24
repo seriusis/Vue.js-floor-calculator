@@ -16,8 +16,14 @@ export default {
     getProducts(state){
         return state.products;
     },
+
     getSelectedCriteria(state){
       return state.selectedCriteria;
+    },
+    getSelectedFlooringTypeText(state){
+        const selectedName = state.selectedCriteria.flooring_type;
+        const criterionData = state.criteria.find(i => i.name === 'flooring_type').values.find(i => i.value === selectedName);
+        return criterionData['textWhom'] ? criterionData['textWhom'] : ''
     },
     getCartTotal(state){
         if(!state.products.length) return 0;

@@ -1,4 +1,5 @@
 <template>
+
     <div>
         <div class="products flex column-xs">
             <div v-for="product in products" :key="product['id']" class="item col-4 col-12-xs" :class="{active:product.inCart}">
@@ -11,15 +12,15 @@
 
                     <div class="caption-bottom">
                         <label class="checkbox">
-                            <input @change="toggleProduct(product['id'])" type="checkbox" :checked="product.inCart">
+                            <input @change="toggleProduct(product.id)" type="checkbox" name="product" :checked="product.inCart">
                             <i class="checkmark"></i>
                         </label>
                         <h3><a class="name" :href="product.link" target="_blank">{{product.title}}</a></h3>
                         <div v-if="product.options" class="product-option">
                             <div v-for="(option, i) in product.options" :key="option.valueId">
-                                {{option.name}}<br>
-                                {{option.value}}<br>
-                                <span v-if="i < product.options.length-1" class="plus">+</span>
+                          {{option.name}}<br>
+                                {{option.value}} <span class="quantity">x {{option.quantity}} шт.</span><br>
+                                <span v-if="i != Object.keys(product.options)[Object.keys(product.options).length-1]" class="plus">+</span>
                             </div>
                         </div>
 
@@ -34,15 +35,16 @@
 <script>
 
     export default {
+        props:['type', 'cart-step-id', 'selected-criteria'],
         computed: {
-          products(){
-            return this.$store.state.products
-          }
+            products(){
+                return this.$store.getters.getProducts.filter((product) => product.type === this.type);
+            },
         },
 
         methods: {
             toggleProduct(id){
-                this.$store.commit('toggleProductInCart',id);
+                this.$store.commit('addProductInCartByType', {id : id, type : this.type});
             }
         },
 
@@ -152,6 +154,10 @@
         color:#5ec19d;
         font-weight: bold;
         font-size:19px;
+    }
+    .quantity{
+        color: #eb1616;
+
     }
 
 </style>

@@ -14,11 +14,6 @@
 
 
     export default {
-        data(){
-            return {
-//                productsData : []
-            }
-        },
         computed: {
             products(){
                 return this.$store.getters.getCartProducts;
@@ -26,16 +21,19 @@
             total(){
                 return this.$store.getters.getCartTotal;
             },
+            selectedCriteria(){
+                return this.$store.getters.getSelectedCriteria;
+            },
 
         },
         methods : {
             addToCart(){
-                window.console.log(this.products);
+                window.addToCartInCalculator ? window.addToCartInCalculator(this.products) : window.console.log(this.products);
             },
             getPromo(){
-                alert('get promo modal')
+                window.getPromoInCalculator ? window.getPromoInCalculator() : alert('get promo modal');
             }
-        }
+        },
 
     }
 </script>

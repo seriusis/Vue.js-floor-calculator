@@ -15,7 +15,7 @@
         <div class="col-3 col-12-sm col-12-xs">
             <div class="step-description">
                 <img src="./../../src/assets/img/info_ico.png">
-                <div v-html="step.description"></div>
+                <div v-html="description"></div>
             </div>
         </div>
     </div>
@@ -27,15 +27,26 @@
 
     import Criterion from './Criterion';
     export default {
-        props : ['step', 'step-number', 'criteria'],
+        props : ['step', 'step-number', 'criteria', 'is-cart'],
         components:{
             Criterion
         },
         computed : {
             formatedStepNumber(){
                 return this.stepNumber.toString().padStart(2,'0')
+            },
+            description(){
+                if(this.isCart && this.$store.getters.getCartProducts.length){
+                    return this.$store.getters.getCartProducts.reduce((res, cur)=>{
+                       return  `${res}
+                            ${res ? '<hr class="divider">' : ''}
+                            ${cur.description}`;
+                    }, '');
+                }
+                return this.step.description;
             }
-        }
+        },
+
     }
 </script>
 
@@ -62,5 +73,14 @@
         display: inline-block;
         text-align:center;
         margin-right: 5px
+    }
+
+
+</style>
+<style>
+    .divider{
+        color: #5ec19d;
+        border-top: 1px solid #5ec19d;
+        margin: 35px 0;
     }
 </style>

@@ -1,10 +1,10 @@
 import api from '../api/calculator';
 
 export default {
-    getProducts(context){
+    getProducts({commit, state}){
         api.getProducts((products => {
-            context.commit('setProducts', products)
-        }))
+           commit('setProducts', products)
+        }), state.selectedCriteria)
     },
     getSteps(context){
         api.getSteps((steps => {

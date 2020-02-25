@@ -1,6 +1,6 @@
 <template>
     <div class="flex column-sm column-xs step-wrap">
-        <div class="step col-9 col-12-sm col-12-xs">
+        <div class="step calc-col-9 calc-col-12-sm calc-col-12-xs">
 
             <h4><b class="step-number">{{ formatedStepNumber}}</b> {{step.title}}</h4>
             <div v-for="criterion in criteria" :key="criterion.id">
@@ -12,14 +12,13 @@
             <slot name="buttons"></slot>
 
         </div>
-        <div class="col-3 col-12-sm col-12-xs">
+        <div class="calc-col-3 calc-col-12-sm calc-col-12-xs">
             <div class="step-description">
                 <img src="./../../src/assets/img/info_ico.png">
                 <div v-html="description"></div>
             </div>
         </div>
     </div>
-
 
 </template>
 

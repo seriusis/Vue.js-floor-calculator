@@ -114,7 +114,7 @@ export const locale = {
             flooring_type_quartz_vinil_tile: 'Кварцвиниловая плитка',
             flooring_type_quartz_vinil_tile_whom: 'кварцвинила',
             destination_main_heating : 'Основное отопление или доп. обогрев',
-            destination_additiona_heating : 'подогрев ламината/линолеума/кварц винила/ковролина до комфортной температуры',
+            destination_additiona_heating : 'подогрев [floor_type] до комфортной температуры',
             floor_evalation_level_1_2 : '1-2 см',
             floor_evalation_level_3 : '3 см и выше',
             free_square_placeholder : 'Пример: 8.6',
@@ -122,7 +122,15 @@ export const locale = {
             thermoregulator_type_programmable : 'Программируемый',
             thermoregulator_type_wifi : 'Wi-Fi терморегулятор',
 
-        }
+        },
+        stepStat : 'й вопрос из',
+        buttons : {
+            prev : 'Назад',
+            next : 'Дальше',
+            addToCart : 'Добавить в корзину',
+            getPromo : 'Получить промокод',
+        },
+        currency : 'грн'
     },
     'ua-uk' : {
         stepInfo : {
@@ -168,7 +176,7 @@ export const locale = {
             thermoregulator_type : {
                 title : 'Виберіть терморегулятор',
                 description : `<p>
-                                <strong>електромеханічний </strong> - простий і бюджетний варіант. Є кнопка вкл / викл і коліщатко накрутки температури:
+                                <strong>Електромеханічний </strong> - простий і бюджетний варіант. Є кнопка вкл / викл і коліщатко накрутки температури:
                                 </p>
                                 <p>
                                 <strong>Програмований</strong> - є ЖК дисплей, на якому показана температура та + можна програмувати (задавати, коли теплій підлозі включитися / вимкнутися)
@@ -222,6 +230,14 @@ export const locale = {
             thermoregulator_type_programmable : 'Програмований',
             thermoregulator_type_wifi : 'Wi-Fi терморегулятор',
 
-        }
+        },
+        stepStat : 'е питання з',
+        buttons : {
+            prev : 'Назад',
+            next : 'Далі',
+            addToCart : 'Додати в кошик',
+            getPromo : 'Отримати промокод',
+        },
+        currency : 'грн'
     },
-}
+};

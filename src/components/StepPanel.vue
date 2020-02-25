@@ -1,6 +1,5 @@
 <template>
     <div class="step-panel">
-
         <ul>
             <li
                 :key="step.id"
@@ -12,12 +11,18 @@
                     <span>{{i+1}}</span>
             </li>
         </ul>
+        <span class="step-stat">{{activeStepIndex+1}}{{textStat}} {{steps.length}}</span>
     </div>
 </template>
 
 
 <script>
  export default{
+     data : function () {
+       return {
+           textStat : this.$text.stepStat
+       }
+     },
      props : ['steps', 'activeStepIndex'],
      computed : {
          barPieseWidth(){
@@ -34,13 +39,20 @@
 
 
 <style scoped>
+    .step-stat{
+        font-size: 13px;
+        vertical-align: top;
+        display: inline-block;
+        position: relative;top:-3px;
+        width: 8%;
+        text-align: right;
+    }
     ul{
         padding: 0;
         margin: 0;
-        width: 100%;
-        display: block;
+        width: 92%;
+        display: inline-block;
         border-radius: 12px;
-        /*overflow-x: hidden;*/
     }
     li{
         display: inline-block;
@@ -95,6 +107,8 @@
         display: block;
     }
 
-
+    @media (max-width: 1100px) {
+        .step-stat, ul{width: 100%;text-align: center}
+    }
 
 </style>

@@ -5,6 +5,7 @@ Vue.use(VueCookies);
 
 const lang = (locale[Vue.$cookies.get('language')] && Vue.$cookies.get('language')) || 'ru-ru';
 const text = locale[lang];
+
 export const steps = [
     {
         id : 1,

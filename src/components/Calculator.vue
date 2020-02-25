@@ -1,5 +1,5 @@
 <template>
-    <div class="wrap container">
+    <div class="wrap calc-container">
 
         <step-panel
             :steps="steps"
@@ -7,6 +7,7 @@
             >
 
         </step-panel>
+
 
         <calculator-step v-show="step.active"  v-for="(step, i) in steps"
                           :key="step.id"
@@ -30,6 +31,7 @@
             </template>
 
         </calculator-step>
+
         <br>
 
 
@@ -99,9 +101,7 @@
         src: url('./../assets/fonts/UniSansHeavyCAPS.otf');
         font-weight: 600;
     }
-    /*@font-face {
-        font-family: 'Uni Sans Thin CAPS';
-        src: url('./../assets/fonts/UniSansThinCAPS.otf');
-        font-weight: 400;
-    }*/
+
+
+
 </style>

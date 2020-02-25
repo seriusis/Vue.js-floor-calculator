@@ -1,8 +1,7 @@
 <template>
-
     <div>
         <div class="products flex column-xs">
-            <div v-for="product in products" :key="product['id']" class="item col-4 col-12-xs" :class="{active:product.inCart}">
+            <div v-for="product in products" :key="product['id']" class="item calc-col-4 calc-col-12-xs" :class="{active:product.inCart}">
                 <div class="inner flex column space-between">
                     <div class="caption-top">
                         <div class="image">
@@ -24,7 +23,7 @@
                             </div>
                         </div>
 
-                        <span class="price">{{product.price}} грн</span>
+                        <span class="price">{{product.price + ' ' + currency}}</span>
                     </div>
                 </div>
             </div>
@@ -35,6 +34,11 @@
 <script>
 
     export default {
+        data : function () {
+          return {
+              currency : this.$text.currency
+          }
+        },
         props:['type', 'cart-step-id', 'selected-criteria'],
         computed: {
             products(){

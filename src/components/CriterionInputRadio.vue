@@ -1,6 +1,6 @@
 <template>
     <div class="criterion-input radio flex">
-        <div class="variant col-3 col-6-xs" v-for="(variant, i) in variants" :key="variant.id">
+        <div class="variant calc-col-3 calc-col-6-xs" v-for="(variant, i) in variants" :key="variant.id">
             <label :class="{active : selectedValue === variant.value}">
                 <img v-if="variant.image" :src="variant.image"/>
                 <span>
@@ -47,7 +47,7 @@
         display: block;
         background: #fff;
         border-radius: 9px;
-        padding: 15px 5px 15px 30px;
+        padding: 15px 5px 15px 40px;
         position: relative;
         top:-12px;
         box-shadow: 17px 17px 29px rgba(0, 4, 2, 0.1);
@@ -59,13 +59,11 @@
 
     }
     label input{
-        opacity: 0;
-        height: 0;
-        width: 0;
+        display: none;
     }
     .checkmark{
         position: absolute;
-        top: 12px;
+        top: 15px;
         left: 12px;
         height: 20px;
         width: 20px;

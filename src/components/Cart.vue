@@ -1,28 +1,31 @@
 <template>
     <div class="flex cart-panel">
         <span class="cart-total">
-            {{total}} <i>грн</i>
+            {{total}} <i>{{currency}}</i>
         </span>
             <slot name="prev-btn"></slot>
 
-            <button class="add-to-cart" @click="addToCart">Добавить в корзину</button>
-            <button class="get-promo" @click="getPromo">Получить промокод</button>
+            <button class="add-to-cart" @click="addToCart">{{textAddToCart}}</button>
+            <button class="get-promo" @click="getPromo">{{textGetPromo}}</button>
     </div>
 </template>
 
 <script>
 
-
     export default {
+        data : function () {
+          return {
+              textAddToCart : this.$text.buttons.addToCart,
+              textGetPromo : this.$text.buttons.getPromo,
+              currency : this.$text.currency,
+          }
+        },
         computed: {
             products(){
                 return this.$store.getters.getCartProducts;
             },
             total(){
                 return this.$store.getters.getCartTotal;
-            },
-            selectedCriteria(){
-                return this.$store.getters.getSelectedCriteria;
             },
 
         },
@@ -34,7 +37,6 @@
                 window.getPromoInCalculator ? window.getPromoInCalculator() : alert('get promo modal');
             }
         },
-
     }
 </script>
 
@@ -72,5 +74,6 @@
         border:1px solid #5ec19d;
         color:#5ec19d
     }
+
 
 </style>

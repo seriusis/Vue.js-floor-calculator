@@ -36,6 +36,11 @@
             selectedCriterionValue(){
                 return this.$store.getters.getSelectedCriteria[this.criterion.name]
             },
+        },
+        watch: {
+            selectedCriterionValue : function () {
+                this.$store.dispatch('getProducts');
+            }
         }
     }
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <div class="wrap calc-container">
+    <div class="wrap calc-container container">
 
         <step-panel
             :steps="steps"
@@ -88,6 +88,8 @@
         created(){
             this.$store.dispatch('getSteps');
             this.$store.dispatch('getCriteria');
+            this.$store.dispatch('getProducts');
+
         }
 
 

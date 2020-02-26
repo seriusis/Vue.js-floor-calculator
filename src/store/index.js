@@ -4,8 +4,6 @@ import mutations from './mutations';
 import actions from './actions';
 import getters from './gettets';
 
-
-
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -14,7 +12,15 @@ export default new Vuex.Store({
         products: [],
         steps: [],
         criteria: [],
-        selectedCriteria: {},
+        selectedCriteria: {
+            destination : 'main-heating',
+            floor_evalation_level : '1-2',
+            flooring_type : 'tile',
+            free_square : '',
+            level : 'first',
+            room_type : 'kitchen',
+            thermoregulator_type : 'electromechanical'
+        },
     },
     mutations,
     actions,

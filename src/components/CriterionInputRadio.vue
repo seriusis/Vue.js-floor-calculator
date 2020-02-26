@@ -42,6 +42,7 @@
         cursor: pointer;
         padding: 0 5px;
         max-width: 210px;
+        font-size:16px;
     }
     label span{
         display: block;

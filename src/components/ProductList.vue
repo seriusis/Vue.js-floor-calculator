@@ -50,10 +50,6 @@
             toggleProduct(id){
                 this.$store.commit('addProductInCartByType', {id : id, type : this.type});
             }
-        },
-
-        created(){
-            this.$store.dispatch('getProducts');
         }
     }
 </script>
@@ -95,7 +91,8 @@
     }
     .item h3{
         margin: 5px 0;
-
+        font-family: "PT Sans";
+        text-transform: initial;
     }
     .item .name{
         font-weight: bold;
@@ -144,6 +141,7 @@
         -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
         transform: rotate(45deg);
+        box-sizing: content-box;
     }
     .active .checkmark{
         background: #5ec19d;

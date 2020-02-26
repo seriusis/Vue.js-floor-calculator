@@ -2,6 +2,8 @@ import {products} from './mockData';
 import {criteria, steps} from './calcData';
 const mock = false;
 const productsUrl = 'http://leto.loc/index.php?route=calculation/page/getProducts';
+import Vue from 'vue'
+const language = Vue.$cookies.get('language') || 'ru-ru';
 
 export default {
     getProducts(cb, criteria){
@@ -17,7 +19,7 @@ export default {
                 headers : {
                     'Content-Type': 'application/json'
                 },
-                body : JSON.stringify({criteria})
+                body : JSON.stringify({criteria, language})
             }
         )
             .then(response => response.json())

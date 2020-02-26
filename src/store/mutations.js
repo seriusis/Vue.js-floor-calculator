@@ -4,7 +4,6 @@ export default {
 
   setCriterionValue(state, {name, value}){
       Vue.set(state.selectedCriteria, name, value);
-      this.dispatch('getProducts');
   },
 
     setActiveStepByIndex(state, next){

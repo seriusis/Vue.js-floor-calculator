@@ -2,7 +2,7 @@
     <div class="flex column-sm column-xs step-wrap">
         <div class="step calc-col-9 calc-col-12-sm calc-col-12-xs">
 
-            <h4><b class="step-number">{{ formatedStepNumber}}</b> {{step.title}}</h4>
+            <h4><b class="step-number">{{ formatedStepNumber}}</b> {{title}}</h4>
             <div v-for="criterion in criteria" :key="criterion.id">
 
                <criterion :criterion="criterion"></criterion>
@@ -13,7 +13,7 @@
 
         </div>
         <div class="calc-col-3 calc-col-12-sm calc-col-12-xs">
-            <div class="step-description">
+            <div v-if="description" class="step-description">
                 <img src="./../../src/assets/img/info_ico.png">
                 <div v-html="description"></div>
             </div>
@@ -34,15 +34,19 @@
             formatedStepNumber(){
                 return this.stepNumber.toString().padStart(2,'0')
             },
+            title(){
+                return this.isCart ? this.step.title+' '+this.$text.heating_type_title[this.$store.getters.getProductsType] : this.step.title
+            },
             description(){
                 if(this.isCart && this.$store.getters.getCartProducts.length){
                     return this.$store.getters.getCartProducts.reduce((res, cur)=>{
                        return  `${res}
                             ${res ? '<hr class="divider">' : ''}
                             ${cur.description}`;
-                    }, '');
+                    }, '').trim();
                 }
-                return this.step.description;
+                    return this.isCart ? this.step.description[this.$store.getters.getProductsType] : this.step.description;
+
             }
         },
 
@@ -53,9 +57,8 @@
     .step-description{
         border-left: 2px solid #5ec19d;
         padding-left: 14px;
-        font-size: 14px;
+        font-size: 16px;
         line-height: 22px;
-        margin-top: 70px;
     }
     h4{
         color:#000;

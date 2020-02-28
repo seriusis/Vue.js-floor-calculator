@@ -5,7 +5,7 @@
         </span>
             <slot name="prev-btn"></slot>
 
-            <button class="add-to-cart" @click="addToCart">{{textAddToCart}}</button>
+            <button :disabled="!products.length" class="add-to-cart" @click="addToCart">{{textAddToCart}}</button>
             <button class="get-promo" @click="getPromo">{{textGetPromo}}</button>
     </div>
 </template>
@@ -68,6 +68,11 @@
     }
     .add-to-cart{
         background: #5ec19e;
+    }
+    .add-to-cart[disabled]{
+        cursor: not-allowed;
+        filter: alpha(opacity=65);
+        opacity: .65;
     }
     .get-promo{
         background: #fff;

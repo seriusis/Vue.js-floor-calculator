@@ -16,7 +16,9 @@ export default {
     getProducts(state){
         return state.products;
     },
-
+    getProductsType(state){
+        return state.products.length ? state.products[0]['heating_type'] : 'heating_mat'
+    },
     getSelectedCriteria(state){
       return state.selectedCriteria;
     },

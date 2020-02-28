@@ -89,7 +89,6 @@
             this.$store.dispatch('getSteps');
             this.$store.dispatch('getCriteria');
             this.$store.dispatch('getProducts');
-
         }
 
 

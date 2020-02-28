@@ -1,17 +1,21 @@
 <template>
     <div class="criterion-input radio flex">
-        <div class="variant calc-col-3 calc-col-6-xs" v-for="(variant, i) in variants" :key="variant.id">
-            <label :class="{active : selectedValue === variant.value}">
+        <div class="variant"
+             v-for="(variant, i) in variants" :key="variant.id"
+             :class="variantCols[name] ? variantCols[name] : 'calc-col-3 calc-col-4-sm'"
+
+        >
+            <label :class="{active : selectedValue === variant.value, 'with-img' : variant.image}">
                 <img v-if="variant.image" :src="variant.image"/>
-                <span>
+                <div class="criterion-value">
                     <input @change="selectCriterionValue(i)"
                            type="radio"
                            :name="name"
                            :value="variant.value"
                            :checked="selectedValue === variant.value"/>
                     <i class="checkmark"></i>
-                    {{variant.value === 'additional-heating' ? generateHeatingText(variant.text) : variant.text}}
-                </span>
+                    <span v-html="variant.value === 'additional-heating' ? generateHeatingText(variant.text) : variant.text"></span>
+                </div>
             </label>
 
         </div>
@@ -20,6 +24,13 @@
 
 <script>
     export default{
+        data : function () {
+            return {
+                variantCols : {
+                    destination : 'calc-col-6 calc-col-6-sm'
+                }
+            }
+        },
         props : ['name', 'variants', 'selectedValue'],
         methods : {
             selectCriterionValue(i){
@@ -41,10 +52,11 @@
         display: block;
         cursor: pointer;
         padding: 0 5px;
-        max-width: 210px;
+        /*max-width: 210px;*/
         font-size:16px;
     }
-    label span{
+    label.with-img{max-width: 209px;}
+    label .criterion-value{
         display: block;
         background: #fff;
         border-radius: 9px;

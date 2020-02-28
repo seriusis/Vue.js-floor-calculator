@@ -1,9 +1,12 @@
 import {products} from './mockData';
 import {criteria, steps} from './calcData';
 const mock = false;
-const productsUrl = 'http://leto.loc/index.php?route=calculation/page/getProducts';
 import Vue from 'vue'
 const language = Vue.$cookies.get('language') || 'ru-ru';
+
+const productsUrl =  process.env.NODE_ENV === 'production' ? 'https://leto.net.ua/index.php?route=calculation/page/getProducts' : 'http://leto.loc/index.php?route=calculation/page/getProducts';
+
+
 
 export default {
     getProducts(cb, criteria){

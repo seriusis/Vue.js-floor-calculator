@@ -13,7 +13,7 @@ export default new Vuex.Store({
         steps: [],
         criteria: [],
         selectedCriteria: {
-            destination : 'main-heating',
+            destination : 'additional-heating',
             floor_evalation_level : '1-2',
             flooring_type : 'tile',
             free_square : '',

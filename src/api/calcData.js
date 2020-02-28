@@ -200,14 +200,15 @@ export const criteria = [
         values : [
             {
                 id : 1,
-                value: 'main-heating',
-                text : text.criteriaValues.destination_main_heating,
-            },
-            {
-                id : 2,
                 value: 'additional-heating',
                 text : text.criteriaValues.destination_additiona_heating,
             },
+            {
+                id : 2,
+                value: 'main-heating',
+                text : text.criteriaValues.destination_main_heating,
+            }
+
         ],
 
     },

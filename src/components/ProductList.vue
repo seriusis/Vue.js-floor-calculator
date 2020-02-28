@@ -1,20 +1,26 @@
 <template>
     <div>
         <div class="products flex column-xs">
+            <template v-if="!products.length">
+                {{noProducts[type]}}
+            </template>
+
             <div v-for="product in products" :key="product['id']" class="item calc-col-4 calc-col-12-xs" :class="{active:product.inCart}">
                 <div class="inner flex column space-between">
                     <div class="caption-top">
                         <div class="image">
-                            <img :src="product.image" :alt="product.title" :title="product.title"/>
+                            <a class="name" :href="product.link" target="_blank"><img :src="product.image" :alt="product.title" :title="product.title"/></a>
                         </div>
                     </div>
 
                     <div class="caption-bottom">
-                        <label class="checkbox">
-                            <input @change="toggleProduct(product.id)" type="checkbox" name="product" :checked="product.inCart">
-                            <i class="checkmark"></i>
+                        <label>
+                            <div class="checkbox">
+                                <input @change="toggleProduct(product.id)" type="checkbox" name="product" :checked="product.inCart">
+                                <i class="checkmark"></i>
+                            </div>
+                            <h3>{{product.title}}</h3>
                         </label>
-                        <h3><a class="name" :href="product.link" target="_blank">{{product.title}}</a></h3>
                         <div v-if="product.options" class="product-option">
                             <div v-for="(option, i) in product.options" :key="option.valueId">
                           {{option.name}}<br>
@@ -36,7 +42,8 @@
     export default {
         data : function () {
           return {
-              currency : this.$text.currency
+              currency : this.$text.currency,
+              noProducts : this.$text.noProducts
           }
         },
         props:['type', 'cart-step-id', 'selected-criteria'],
@@ -90,17 +97,15 @@
         box-shadow: 10px 10px 20px rgba(94, 193, 157, 0.2);
     }
     .item h3{
-        margin: 5px 0;
-        font-family: "PT Sans";
-        text-transform: initial;
-    }
-    .item .name{
         font-weight: bold;
         font-size:16px;
         color:#000;
-        text-decoration: none;
+        margin: 5px 0;
+        font-family: "PT Sans";
+        text-transform: initial;
+        min-height: 50px;
+        line-height: 22px;
     }
-
     .item .product-option{
         font-size: 14px;
     }
